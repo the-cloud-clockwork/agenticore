@@ -264,7 +264,8 @@ def _pip_install_editable(path: Path) -> None:
     """
     logger.info("uv pip install -e %s", path)
     result = subprocess.run(
-        ["uv", "pip", "install", "--python", _venv_python(), "--reinstall", "-e", str(path)],
+        # Never bare --reinstall: it rewrites every dependency under the running server.
+        ["uv", "pip", "install", "--python", _venv_python(), "--reinstall-package", "agentihooks", "-e", str(path)],
         check=False,
         capture_output=True,
         text=True,

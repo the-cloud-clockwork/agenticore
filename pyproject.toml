@@ -25,6 +25,7 @@ dependencies = [
     # (when AGENTICORE_AGENTIHOOKS_URL+BRANCH are unset) or via volume-mount /
     # external mechanism (when both are set, agenticore stays out).
     "fastmcp>=2.0",
+    "mcp>=1,<2",  # server.py imports mcp.server.fastmcp, removed in mcp 2.0
     "redis>=7.0",
     "uvicorn[standard]>=0.30",
     "httpx>=0.25",
